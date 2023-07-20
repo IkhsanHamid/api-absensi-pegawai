@@ -3,9 +3,9 @@ import AbsenModel from "../models/Absen.model.js";
 // helper handling error
 const messageHelper = (result, status, message) => {
   return {
-    message: message,
     status: status,
     result: result,
+    message: message,
   };
 };
 
@@ -73,7 +73,13 @@ const findByDateAndType = async (req, res) => {
     });
     res.send(messageHelper("data berhasil ditampilkan", 202, result));
   } catch (error) {
-    res.send(messageHelper("Terjadi kesalahan saat mengambil absen", 500, error.message));
+    res.send(
+      messageHelper(
+        "Terjadi kesalahan saat mengambil absen",
+        500,
+        error.message
+      )
+    );
   }
 };
 
@@ -163,7 +169,7 @@ const findLateCount = async (req, res) => {
     });
 
     res.send(
-      messageHelper("jumlah karyawan yang telat", 202, { count, dataLate })
+      messageHelper(`jumlah karyawan yang telat ${count}`, 202, dataLate)
     );
   } catch (err) {
     res.send(
@@ -197,10 +203,7 @@ const findAbsenCount = async (req, res) => {
     });
 
     res.send(
-      messageHelper("jumlah karyawan yang tidak masuk", 202, {
-        count,
-        dataAbsen,
-      })
+      messageHelper(`jumlah karyawan yang tidak masuk ${count}`, 202, dataAbsen)
     );
   } catch (err) {
     res.send(
@@ -235,7 +238,7 @@ const findCutiCount = async (req, res) => {
     });
 
     res.send(
-      messageHelper("jumlah karyawan yang cuti", 202, { count, cutiData })
+      messageHelper(`jumlah karyawan yang cuti ${count}`, 202, cutiData)
     );
   } catch (err) {
     res.send(
@@ -271,10 +274,11 @@ const findApprove = async (req, res) => {
       },
     });
     res.send(
-      messageHelper("jumlah karyawan yang cuti/izin di approve", 202, {
-        count,
-        cutidanizinData,
-      })
+      messageHelper(
+        `jumlah karyawan yang cuti/izin di approve ${count}`,
+        202,
+        cutidanizinData
+      )
     );
   } catch (error) {
     res.send(
@@ -310,10 +314,11 @@ const findNotApprove = async (req, res) => {
       },
     });
     res.send(
-      messageHelper("jumlah karyawan yang cuti/izin di approve", 202, {
-        count,
-        cutidanizinData,
-      })
+      messageHelper(
+        `jumlah karyawan yang cuti/izin tidak di approve ${count}`,
+        202,
+        cutidanizinData
+      )
     );
   } catch (error) {
     res.send(
@@ -349,10 +354,11 @@ const findWaitApprove = async (req, res) => {
       },
     });
     res.send(
-      messageHelper("jumlah karyawan yang cuti/izin di approve", 202, {
-        count,
-        cutidanizinData,
-      })
+      messageHelper(
+        `jumlah karyawan yang cuti/izin waiting approve ${count}`,
+        202,
+        cutidanizinData
+      )
     );
   } catch (error) {
     res.send(
@@ -377,5 +383,5 @@ export default {
   findApprove,
   findNotApprove,
   findWaitApprove,
-  findByDateAndType
+  findByDateAndType,
 };
