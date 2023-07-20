@@ -49,7 +49,7 @@ Ini dibuat di lokal, database bernama 'perusahaan' dan collectionnya 'absens'
 
 #### Response
 
-{
+`{
     "message": [
         {
             "_id": "64b7d56e5f438f6032ce100b",
@@ -104,7 +104,7 @@ Ini dibuat di lokal, database bernama 'perusahaan' dan collectionnya 'absens'
     ],
     "status": 202,
     "result": "data berhasil ditampilkan"
-}
+}`
 
 ### 3. PUT /update/:absenId
 
